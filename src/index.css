@@ -1,0 +1,495 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom palette requested by the user */
+  --color-brand-green: #11FF62;
+  --color-brand-yellow: #F4FF12;
+  --color-brand-dark: #04080F;
+  --color-brand-dark-card: rgba(8, 14, 26, 0.65);
+  
+  /* Semantic color aliases to seamlessly map existing component utilities to the new professional palette */
+  --color-brand-cyan: #11FF62;
+  --color-brand-magenta: #F4FF12;
+  --color-brand-violet: #11FF62;
+  --color-brand-blue: #F4FF12;
+  --color-brand-yellow-hover: #d2db0b;
+  --color-brand-blue-hover: #d2db0b;
+  --color-brand-cyan-hover: #0ee054;
+  --color-brand-magenta-hover: #e3eb0f;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+/* Custom styles for animations and shadows */
+@layer utilities {
+  .bg-fluid-cosmic {
+    background-color: #04080f;
+    background-image: 
+      /* Neon Green glow bottom right */
+      radial-gradient(circle at 95% 95%, rgba(17, 255, 98, 0.15) 0%, rgba(244, 255, 18, 0.05) 30%, transparent 60%),
+      /* Neon Yellow glow top right */
+      radial-gradient(circle at 95% 5%, rgba(244, 255, 18, 0.12) 0%, rgba(17, 255, 98, 0.04) 30%, transparent 60%),
+      /* Neon Yellow glow top-left */
+      radial-gradient(circle at 5% 5%, rgba(244, 255, 18, 0.12) 0%, rgba(17, 255, 98, 0.04) 30%, transparent 55%),
+      /* Neon Green glow bottom left */
+      radial-gradient(circle at 5% 95%, rgba(17, 255, 98, 0.15) 0%, rgba(244, 255, 18, 0.05) 30%, transparent 70%),
+      /* Dark base overlay to blend them elegantly */
+      radial-gradient(circle at 50% 50%, rgba(6, 12, 22, 0.75) 0%, #04080f 100%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .bg-fluid-home {
+    position: relative;
+    background-color: #03051d;
+    background-image: 
+      /* Subtle Tech Dot Grid */
+      radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      /* Vibrant Magenta flow at top-left */
+      radial-gradient(circle at 10% 30%, rgba(255, 0, 127, 0.25) 0%, rgba(225, 0, 255, 0.12) 35%, transparent 65%),
+      /* Glowing deep purple/blue upper-right */
+      radial-gradient(circle at 85% 15%, rgba(93, 0, 255, 0.25) 0%, rgba(0, 51, 255, 0.12) 40%, transparent 70%),
+      /* Glowing warm orange bottom-left */
+      radial-gradient(circle at 15% 90%, rgba(255, 94, 0, 0.24) 0%, rgba(255, 170, 0, 0.08) 35%, transparent 60%),
+      /* Neon cyan/blue bottom-right */
+      radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.24) 0%, rgba(0, 102, 255, 0.1) 35%, transparent 65%),
+      /* Dark base blend */
+      radial-gradient(circle at 50% 50%, rgba(4, 5, 23, 0.85) 0%, #03051d 100%);
+    background-size: 40px 40px, cover, cover, cover, cover, cover;
+    background-position: center, center, center, center, center, center;
+    background-attachment: fixed;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  }
+
+  .bg-fluid-courses {
+    background-color: #03060c;
+    background-image: 
+      radial-gradient(circle at 90% 90%, rgba(17, 255, 98, 0.14) 0%, rgba(244, 255, 18, 0.04) 30%, transparent 65%),
+      radial-gradient(circle at 90% 10%, rgba(244, 255, 18, 0.1) 0%, rgba(17, 255, 98, 0.03) 35%, transparent 70%),
+      radial-gradient(circle at 10% 10%, rgba(17, 255, 98, 0.12) 0%, rgba(244, 255, 18, 0.04) 30%, transparent 60%),
+      radial-gradient(circle at 10% 90%, rgba(244, 255, 18, 0.1) 0%, rgba(17, 255, 98, 0.03) 30%, transparent 70%),
+      radial-gradient(circle at 50% 50%, rgba(4, 8, 16, 0.8) 0%, #03060c 100%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .bg-fluid-ai-training {
+    position: relative;
+    background-color: #03051d;
+    background-image: 
+      /* Subtle Tech Dot Grid */
+      radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      /* Vibrant Magenta flow at top-left */
+      radial-gradient(circle at 10% 30%, rgba(255, 0, 127, 0.25) 0%, rgba(225, 0, 255, 0.12) 35%, transparent 65%),
+      /* Glowing deep purple/blue upper-right */
+      radial-gradient(circle at 85% 15%, rgba(93, 0, 255, 0.25) 0%, rgba(0, 51, 255, 0.12) 40%, transparent 70%),
+      /* Glowing warm orange bottom-left */
+      radial-gradient(circle at 15% 90%, rgba(255, 94, 0, 0.24) 0%, rgba(255, 170, 0, 0.08) 35%, transparent 60%),
+      /* Neon cyan/blue bottom-right */
+      radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.24) 0%, rgba(0, 102, 255, 0.1) 35%, transparent 65%),
+      /* Dark base blend */
+      radial-gradient(circle at 50% 50%, rgba(4, 5, 23, 0.85) 0%, #03051d 100%);
+    background-size: 40px 40px, cover, cover, cover, cover, cover;
+    background-position: center, center, center, center, center, center;
+    background-attachment: fixed;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  }
+
+  .bg-fluid-biology {
+    background-color: #03060c;
+    background-image: 
+      radial-gradient(circle at 90% 90%, rgba(17, 255, 98, 0.15) 0%, rgba(244, 255, 18, 0.05) 30%, transparent 65%),
+      radial-gradient(circle at 90% 10%, rgba(244, 255, 18, 0.12) 0%, rgba(17, 255, 98, 0.04) 35%, transparent 70%),
+      radial-gradient(circle at 10% 10%, rgba(17, 255, 98, 0.15) 0%, rgba(244, 255, 18, 0.05) 30%, transparent 60%),
+      radial-gradient(circle at 10% 90%, rgba(244, 255, 18, 0.12) 0%, rgba(17, 255, 98, 0.04) 30%, transparent 70%),
+      radial-gradient(circle at 50% 50%, rgba(4, 8, 16, 0.8) 0%, #03060c 100%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .bg-fluid-chemistry {
+    position: relative;
+    background-color: #03051d;
+    background-image: 
+      /* Subtle Tech Dot Grid */
+      radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      /* Vibrant Magenta flow at top-left */
+      radial-gradient(circle at 10% 30%, rgba(255, 0, 127, 0.25) 0%, rgba(225, 0, 255, 0.12) 35%, transparent 65%),
+      /* Glowing deep purple/blue upper-right */
+      radial-gradient(circle at 85% 15%, rgba(93, 0, 255, 0.25) 0%, rgba(0, 51, 255, 0.12) 40%, transparent 70%),
+      /* Glowing warm orange bottom-left */
+      radial-gradient(circle at 15% 90%, rgba(255, 94, 0, 0.24) 0%, rgba(255, 170, 0, 0.08) 35%, transparent 60%),
+      /* Neon cyan/blue bottom-right */
+      radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.24) 0%, rgba(0, 102, 255, 0.1) 35%, transparent 65%),
+      /* Dark base blend */
+      radial-gradient(circle at 50% 50%, rgba(4, 5, 23, 0.85) 0%, #03051d 100%);
+    background-size: 40px 40px, cover, cover, cover, cover, cover;
+    background-position: center, center, center, center, center, center;
+    background-attachment: fixed;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  }
+
+  .bg-fluid-cbc {
+    background-color: #03060c;
+    background-image: 
+      radial-gradient(circle at 90% 90%, rgba(244, 255, 18, 0.12) 0%, rgba(17, 255, 98, 0.04) 30%, transparent 65%),
+      radial-gradient(circle at 90% 10%, rgba(17, 255, 98, 0.12) 0%, rgba(244, 255, 18, 0.04) 35%, transparent 70%),
+      radial-gradient(circle at 10% 10%, rgba(244, 255, 18, 0.1) 0%, rgba(17, 255, 98, 0.03) 30%, transparent 60%),
+      radial-gradient(circle at 10% 90%, rgba(17, 255, 98, 0.12) 0%, rgba(244, 255, 18, 0.04) 30%, transparent 70%),
+      radial-gradient(circle at 50% 50%, rgba(4, 8, 16, 0.8) 0%, #03060c 100%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .bg-fluid-contact {
+    position: relative;
+    background-color: #03051d;
+    background-image: 
+      /* Subtle Tech Dot Grid */
+      radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      /* Vibrant Magenta flow at top-left */
+      radial-gradient(circle at 10% 30%, rgba(255, 0, 127, 0.25) 0%, rgba(225, 0, 255, 0.12) 35%, transparent 65%),
+      /* Glowing deep purple/blue upper-right */
+      radial-gradient(circle at 85% 15%, rgba(93, 0, 255, 0.25) 0%, rgba(0, 51, 255, 0.12) 40%, transparent 70%),
+      /* Glowing warm orange bottom-left */
+      radial-gradient(circle at 15% 90%, rgba(255, 94, 0, 0.24) 0%, rgba(255, 170, 0, 0.08) 35%, transparent 60%),
+      /* Neon cyan/blue bottom-right */
+      radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.24) 0%, rgba(0, 102, 255, 0.1) 35%, transparent 65%),
+      /* Dark base blend */
+      radial-gradient(circle at 50% 50%, rgba(4, 5, 23, 0.85) 0%, #03051d 100%);
+    background-size: 40px 40px, cover, cover, cover, cover, cover;
+    background-position: center, center, center, center, center, center;
+    background-attachment: fixed;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  }
+
+  .glass-card {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card-hover:hover {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+  }
+
+  @keyframes bounce-horizontal {
+    0%, 100% {
+      transform: translateX(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  .animate-bounce-horizontal {
+    animation: bounce-horizontal 1s infinite;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-none {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Diverse Distinct Text Gradients for Each Section based on Green, White, and Yellow */
+  .text-gradient,
+  .text-gradient-default {
+    background-image: linear-gradient(135deg, #ffffff 0%, #11FF62 50%, #F4FF12 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .text-gradient-coral {
+    background-image: linear-gradient(135deg, #ffffff 0%, #F4FF12 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .text-gradient-cyan {
+    background-image: linear-gradient(135deg, #ffffff 0%, #11FF62 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .text-gradient-magenta {
+    background-image: linear-gradient(135deg, #ffffff 0%, #F4FF12 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .text-gradient-blue {
+    background-image: linear-gradient(135deg, #11FF62 0%, #F4FF12 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .text-gradient-lime {
+    background-image: linear-gradient(135deg, #11FF62 0%, #ffffff 50%, #F4FF12 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .text-gradient-emerald {
+    background-image: linear-gradient(135deg, #11FF62 0%, #F4FF12 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .text-gradient-orange {
+    background-image: linear-gradient(135deg, #F4FF12 0%, #11FF62 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .text-gradient-gold {
+    background-image: linear-gradient(135deg, #ffffff 0%, #11FF62 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .text-gradient-sunset {
+    background-image: linear-gradient(135deg, #11FF62 0%, #ffffff 50%, #F4FF12 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .section-bg-image, .section-bg-gradient {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Make the background photo global, consistent, and seamless across all pages/sections */
+  .bg-fluid-home, .bg-fluid-courses, .bg-fluid-ai-training, .bg-fluid-biology, .bg-fluid-chemistry, .bg-fluid-cbc, .bg-fluid-contact {
+    position: relative;
+    z-index: 1;
+  }
+
+  .bg-fluid-home::before, 
+  .bg-fluid-courses::before, 
+  .bg-fluid-ai-training::before, 
+  .bg-fluid-biology::before, 
+  .bg-fluid-chemistry::before, 
+  .bg-fluid-cbc::before, 
+  .bg-fluid-contact::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1600') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.12 !important; /* Premium opacity for deep contrast and text readability */
+    z-index: -10;
+    pointer-events: none;
+  }
+
+  /* Scrolling Marquee Utility */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 12px));
+    }
+  }
+
+  .animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 50s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  @media (min-width: 768px) {
+    .mask-horizontal {
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+  }
+
+  /* TYPOGRAPHY SYSTEM SPECIFICATIONS (WCAG AA Compliant) */
+  .text-h1 {
+    font-family: var(--font-sans) !important;
+    font-size: 40px !important; /* Mobile */
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
+  }
+  @media (min-width: 768px) {
+    .text-h1 {
+      font-size: 48px !important; /* Tablet */
+    }
+  }
+  @media (min-width: 1024px) {
+    .text-h1 {
+      font-size: 56px !important; /* Desktop */
+    }
+  }
+
+  .text-h2 {
+    font-family: var(--font-sans) !important;
+    font-size: 28px !important; /* Mobile */
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+  }
+  @media (min-width: 768px) {
+    .text-h2 {
+      font-size: 32px !important; /* Tablet */
+    }
+  }
+  @media (min-width: 1024px) {
+    .text-h2 {
+      font-size: 36px !important; /* Desktop */
+    }
+  }
+
+  .text-h3 {
+    font-family: var(--font-sans) !important;
+    font-size: 22px !important; /* Mobile */
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
+  }
+  @media (min-width: 768px) {
+    .text-h3 {
+      font-size: 24px !important; /* Tablet */
+    }
+  }
+  @media (min-width: 1024px) {
+    .text-h3 {
+      font-size: 28px !important; /* Desktop */
+    }
+  }
+
+  .text-card-title {
+    font-family: var(--font-sans) !important;
+    font-size: 18px !important; /* Mobile */
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+  }
+  @media (min-width: 768px) {
+    .text-card-title {
+      font-size: 20px !important; /* Tablet */
+    }
+  }
+  @media (min-width: 1024px) {
+    .text-card-title {
+      font-size: 22px !important; /* Desktop */
+    }
+  }
+
+  .text-body {
+    font-family: var(--font-sans) !important;
+    font-size: 16px !important; /* Mobile */
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+  }
+  @media (min-width: 768px) {
+    .text-body {
+      font-size: 18px !important; /* Tablet & Desktop */
+    }
+  }
+
+  .text-small {
+    font-family: var(--font-sans) !important;
+    font-size: 14px !important; /* Mobile */
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+  }
+  @media (min-width: 1024px) {
+    .text-small {
+      font-size: 16px !important; /* Desktop */
+    }
+  }
+
+  .text-nav {
+    font-family: var(--font-sans) !important;
+    font-size: 16px !important; /* Mobile */
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+  }
+  @media (min-width: 1024px) {
+    .text-nav {
+      font-size: 17px !important; /* Desktop */
+    }
+  }
+
+  .text-btn {
+    font-family: var(--font-sans) !important;
+    font-size: 16px !important; /* Mobile & Desktop */
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+  }
+
+  .text-label {
+    font-family: var(--font-sans) !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+  }
+
+  .text-input {
+    font-family: var(--font-sans) !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+  }
+
+  .text-footer {
+    font-family: var(--font-sans) !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+  }
+}
+
